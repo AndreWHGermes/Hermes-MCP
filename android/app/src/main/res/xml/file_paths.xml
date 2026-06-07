@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Для установки APK из getApplicationDocumentsDirectory -->
+    <files-path name="documents" path="HermesVoice-"/>
+
+    <!-- Для установки APK из кэша -->
+    <cache-path name="cache" path="HermesVoice-"/>
+
+    <!-- Для установки APK из внешнего хранилища (если используем DownloadManager) -->
+    <external-path name="downloads" path="Download/"/>
+</paths>

@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Hermes Voice API — rewrite rules
+# Если PHP-файл размещён в корне WordPress, раскомментируй:
+# RewriteRule ^hermes-api(/.*)?$ /hermes-api.php [L,QSA]
+
+# Если PHP-файл размещён в подпапке, используй:
+# RewriteRule ^hermes-api(/.*)?$ /wp-content/hermes-api/hermes-api.php [L,QSA]

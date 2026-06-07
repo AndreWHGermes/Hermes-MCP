@@ -1,0 +1,31 @@
+name: hermes_voice_app
+description: "Голосовое приложение для связи с Hermes (серверная архитектура)"
+publish_to: 'none'
+version: 7.0.0+70
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  audioplayers: ^6.1.0
+  path_provider: ^2.1.0
+  flutter_background_service: ^5.0.0
+  flutter_local_notifications: ^18.0.0
+  permission_handler: ^11.3.0
+  shared_preferences: ^2.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/sounds/power_on.wav
+    - assets/sounds/power_off.wav
+    - assets/sounds/beep_start.wav
+    - assets/sounds/beep_end.wav

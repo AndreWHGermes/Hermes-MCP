@@ -1,0 +1,10 @@
+build/
+.gradle/
+.idea/
+*.iml
+.DS_Store
+flutter_*
+*.log
+*.apk
+*.aab
+.env
