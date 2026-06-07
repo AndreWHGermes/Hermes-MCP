@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    kotlin("android") version "2.1.20"
     id("dev.flutter.flutter-gradle-plugin")
 }
 
