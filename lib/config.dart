@@ -37,14 +37,6 @@ class Config {
   static const String apiPing = '/voice/api/ping';
 
   // ═══════════════════════════════════════════════════════════════
-  //  БАКВАРДНАЯ СОВМЕСТИМОСТЬ (для telegram_service.dart)
-  // ═══════════════════════════════════════════════════════════════
-  static const String serverUrl = defaultServerUrl;
-  static const String apiVoice = '/voice/api/send';
-  static const String apiText = '/voice/api/send';
-  static const String apiPoll = '/voice/api/respond';
-
-  // ═══════════════════════════════════════════════════════════════
   //  SharedPreferences keys
   // ═══════════════════════════════════════════════════════════════
   static const String prefClientId = 'client_id';

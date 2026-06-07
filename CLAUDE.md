@@ -1,4 +1,4 @@
-# Hermes Voice App
+# Hermes Voice App v7.0
 
 Роли:
 - Андрей — заказчик. Ставит задачи через Гермеса.
@@ -6,17 +6,22 @@
 - Я (Claude Code) — субагент-разработчик. Пишу код, ничего больше.
 
 ## Проект
-Flutter-приложение для Android. Голосовой ассистент с wake word "JARVIS" (Porcupine оффлайн).
-Telegram Bot API интеграция (@hermvois_bot).
+Flutter-приложение для Android. Голосовой ассистент с wake word "Гермес".
+Google SpeechRecognizer (встроен в Android) для распознавания речи.
+Прямое HTTP-соединение с сервером gptconnect.tw1.ru (voice/api/*).
 
 ## Ключевые файлы
-- lib/config.dart — токены, chatId, версия
+- lib/config.dart — версия, API endpoints, лимиты
 - lib/main.dart — точка входа
 - lib/screens/home_screen.dart — главный экран (кнопка Вкл/Выкл, лог)
-- lib/services/recorder_service.dart — MethodChannel к Kotlin
-- lib/services/telegram_service.dart — Isolate-based polling
-- lib/services/audio_service.dart — PlaybackQueue
-- android/.../MainActivity.kt — Porcupine + AudioRecord
+- lib/screens/auth_screen.dart — экран аутентификации (привязка к серверу)
+- lib/services/voice_service.dart — HTTP клиент для прямой связи с сервером
+- lib/services/recorder_service.dart — MethodChannel к Kotlin (AudioRecord)
+- lib/services/audio_service.dart — воспроизведение OGG/WAV
+- lib/services/settings_service.dart — SharedPreferences обёртка
+- lib/services/log_service.dart — логирование
+- lib/services/update_service.dart — проверка обновлений
+- android/.../MainActivity.kt — Google SpeechRecognizer + AudioRecord + wake word
 - pubspec.yaml — зависимости
 - android/app/build.gradle.kts — Android сборка
 
@@ -33,7 +38,9 @@ Telegram Bot API интеграция (@hermvois_bot).
 10. Версию увеличиваю: pubspec.yaml version: X.Y.Z+N, config.dart appVersion.
 
 ## Важно
-- Porcupine инициализировать по команде из Flutter (не в configureFlutterEngine)
+- VoiceService — единственный сервис для связи с сервером (замена TelegramService)
+- Wake word "Гермес" обрабатывается в Kotlin (MainActivity)
+- Google SpeechRecognizer встроен в Android — не требует загрузки моделей
 - AssetSource путь: 'sounds/file.wav' (без assets/)
 - Gradle: -Xmx2g, daemon=false
 - pkill -f GradleDaemon перед сборкой

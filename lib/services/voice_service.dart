@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import '../config.dart';
 import 'log_service.dart';
 import 'settings_service.dart';
@@ -274,12 +275,7 @@ class VoiceService {
   }
 
   Future<Directory> _tmpDir() async {
-    // Пробуем контекст приложения
-    try {
-      // Используем path_provider создаём временную директорию
-      final dir = Directory('/data/data/com.hermes.hermes_voice_app/cache');
-      if (await dir.exists()) return dir;
-    } catch (_) {}
-    return Directory('/tmp');
+    final dir = await getTemporaryDirectory();
+    return dir;
   }
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -250,6 +251,7 @@ class _HomeScreenState extends State<HomeScreen>
             tooltip: 'Проверить обновления',
             onPressed: () async {
               _log_('🔄 Проверяю обновления...', LogType.info);
+              final messenger = ScaffoldMessenger.of(context);
               final result = await UpdateService().checkForUpdate();
               if (!mounted) return;
               if (result.updateAvailable) {
@@ -259,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen>
                   onDownload: () => _downloadAndInstall(result),
                 );
               } else {
-                ScaffoldMessenger.of(context).showSnackBar(
+                messenger.showSnackBar(
                   const SnackBar(
                     content: Text('✅ Установлена последняя версия'),
                     backgroundColor: Color(0xFF2ECC71),

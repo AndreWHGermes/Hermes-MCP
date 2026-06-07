@@ -148,6 +148,7 @@ class UpdateService {
           tag: 'UPDATE');
 
       // Запускаем установку через Intent
+      // ignore: use_build_context_synchronously
       await _installApk(context, file);
 
       _isDownloading = false;
